@@ -1,0 +1,127 @@
+dosseg
+.model small
+.stack 100h
+.data
+chor db 'O'
+a db 15
+b db 20
+.code
+main proc
+mov dx,@data
+mov ds,dx
+
+
+BackBox:
+mov dl,56
+mov dh,18
+mov ch,4
+mov cl,15
+mov bh,01111000b
+mov al,0
+mov ah,6
+int 10h
+
+mov cx,4
+Row1:
+push cx
+mov dl,b
+mov dh,6
+mov ch,4
+mov cl,a
+mov bh,01001000b
+mov al,0
+mov ah,6
+int 10h
+mov bl,12
+add a,bl
+mov bl,12
+add b,bl
+pop cx
+Loop Row1
+mov b,26
+mov a,21
+
+mov cx,3
+Row2:
+push cx
+mov dl,b
+mov dh,9
+mov ch,7
+mov cl,a
+mov bh,01001000b
+mov al,0
+mov ah,6
+int 10h
+mov bl,12
+add a,bl
+mov bl,12
+add b,bl
+pop cx
+Loop Row2
+
+mov a,15
+mov b,20
+mov cx,4
+Row3:
+push cx
+mov dl,b
+mov dh,12
+mov ch,10
+mov cl,a
+mov bh,01001000b
+mov al,0
+mov ah,6
+int 10h
+mov bl,12
+add a,bl
+mov bl,12
+add b,bl
+pop cx
+Loop Row3
+mov b,26
+mov a,21
+mov cx,3
+
+Row4:
+push cx
+mov dl,b
+mov dh,15
+mov ch,13
+mov cl,a
+mov bh,01001000b
+mov al,0
+mov ah,6
+int 10h
+mov bl,12
+add a,bl
+mov bl,12
+add b,bl
+pop cx
+Loop Row4
+
+
+
+mov a,15
+mov b,20
+mov cx,4
+Row5:
+push cx
+mov dl,b
+mov dh,18
+mov ch,16
+mov cl,a
+mov bh,01001000b
+mov al,0
+mov ah,6
+int 10h
+mov bl,12
+add a,bl
+mov bl,12
+add b,bl
+pop cx
+Loop Row5
+
+mov ah,4ch
+int 21h
+main endp
+end main

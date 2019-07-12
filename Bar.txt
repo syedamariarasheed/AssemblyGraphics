@@ -1,0 +1,39 @@
+dosseg
+.model small
+.stack 100h
+.data
+a db 15
+color db 01101000b
+.code
+main proc
+mov dx,@data
+mov ds,dx
+mov dl,49
+mov dh,17
+mov cx,5
+Labell:
+push cx
+mov ah,6
+mov al,0
+mov bh,color
+mov ch,a
+mov cl,8
+int 10h
+sub dl,7
+mov ch,a
+sub ch,3
+mov a,ch
+mov ch,0
+mov cl,0
+coloor:
+mov bh,color
+add bh,01001010b
+mov color,bh
+pop cx
+
+loop Labell
+
+mov ah,4ch
+int 21h
+main endp
+end main
